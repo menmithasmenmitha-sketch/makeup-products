@@ -57,7 +57,16 @@
       radial-gradient(ellipse 60% 50% at 85% 15%, color-mix(in srgb, var(--shade) 35%, transparent), transparent 70%),
       var(--ink);
     transition:background 0.6s ease;
+    overflow:hidden;
   }
+  .hero-bg{
+    position:absolute;inset:0;z-index:0;
+    background-image:url('https://loremflickr.com/1600/1000/makeup,cosmetics,beauty?lock=11');
+    background-size:cover;background-position:center;
+    opacity:0.28;
+    mask-image:linear-gradient(180deg, rgba(0,0,0,0.9), rgba(0,0,0,0.2));
+  }
+  .hero > *{position:relative;z-index:1;}
   .hero-top{display:flex;align-items:center;gap:0.8rem;margin-bottom:1.6rem;}
   .hero-top .rule{width:2.4rem;height:1px;background:var(--gold);}
   .hero h1{font-size:clamp(2.6rem, 8vw, 6.4rem);line-height:0.98;max-width:14ch;}
@@ -115,12 +124,21 @@
   .card:hover{background:var(--surface);}
   .card-photo{
     width:100%;height:11rem;border-radius:3px;
-    background:linear-gradient(160deg, color-mix(in srgb, var(--pc,var(--wine)) 22%, var(--surface-2)), var(--surface-2));
-    display:flex;align-items:center;justify-content:center;position:relative;
+    position:relative;overflow:hidden;
+    background:var(--surface-2);
   }
-  .card-photo svg{width:64%;height:78%;}
+  .card-photo img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    filter:saturate(1.05) contrast(1.02);
+    transition:transform .5s ease;
+  }
+  .card:hover .card-photo img{transform:scale(1.06);}
+  .card-photo::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(28,17,25,0) 55%, rgba(28,17,25,0.55) 100%);
+  }
   .card-tag{
-    position:absolute;top:0.7rem;left:0.7rem;
+    position:absolute;top:0.7rem;left:0.7rem;z-index:2;
     font-size:0.63rem;letter-spacing:0.12em;text-transform:uppercase;
     background:rgba(28,17,25,0.6);padding:0.28rem 0.6rem;color:var(--cream);
   }
@@ -152,7 +170,17 @@
   .step h3{margin-top:0.6rem;font-size:1.2rem;font-weight:500;}
   .step p{color:var(--cream-dim);font-size:0.86rem;margin-top:0.5rem;line-height:1.6;}
 
-  .cta{background:var(--surface);text-align:center;padding:7rem 5vw;}
+  .cta{
+    text-align:center;padding:7rem 5vw;position:relative;overflow:hidden;
+  }
+  .cta-bg{
+    position:absolute;inset:0;z-index:0;
+    background-image:url('https://loremflickr.com/1600/900/lipstick,texture?lock=22');
+    background-size:cover;background-position:center;
+    opacity:0.22;
+  }
+  .cta-overlay{position:absolute;inset:0;background:var(--surface);opacity:0.82;z-index:0;}
+  .cta > *{position:relative;z-index:1;}
   .cta h2{font-size:clamp(2.2rem,6vw,4.4rem);max-width:16ch;margin:0 auto 1.6rem;line-height:1.05;}
   .cta p{color:var(--cream-dim);max-width:36ch;margin:0 auto 2.4rem;}
 
@@ -184,6 +212,7 @@
 </nav>
 
 <header class="hero" id="hero">
+  <div class="hero-bg"></div>
   <div class="hero-top">
     <div class="rule"></div>
     <span class="eyebrow">Autumn Collection · 2026</span>
@@ -229,9 +258,9 @@
 
   <div class="grid">
 
-    <div class="card" style="--pc:#a8293d">
+    <div class="card">
       <div class="card-photo"><span class="card-tag">Lip</span>
-        <svg viewBox="0 0 100 140"><rect x="30" y="0" width="40" height="55" rx="6" fill="#a8293d"/><rect x="34" y="50" width="32" height="14" fill="#3a2028"/><rect x="26" y="62" width="48" height="50" rx="4" fill="#e9c98f"/><rect x="26" y="106" width="48" height="30" rx="4" fill="#c99a5b"/></svg>
+        <img src="https://share.google/rRUIlIkePJhAlQiey" alt="Velvet Matte Lipstick" loading="lazy">
       </div>
       <div class="card-head"><h3>Velvet Matte Lipstick</h3><span class="stars">★★★★★</span></div>
       <p class="desc">Weightless matte that sets in ninety seconds and doesn't transfer onto your cup. No feathering, no cakiness.</p>
@@ -239,9 +268,9 @@
       <div class="price-row"><span class="price">₹699</span><button class="add-btn">Add</button></div>
     </div>
 
-    <div class="card" style="--pc:#c99a5b">
+    <div class="card">
       <div class="card-photo"><span class="card-tag">Face</span>
-        <svg viewBox="0 0 100 140"><rect x="24" y="30" width="52" height="90" rx="10" fill="#e9c98f" opacity="0.9"/><rect x="24" y="30" width="52" height="90" rx="10" fill="none" stroke="#c99a5b" stroke-width="2"/><rect x="38" y="6" width="24" height="28" rx="4" fill="#3a2028"/><circle cx="50" cy="10" r="4" fill="#c99a5b"/></svg>
+        <img src="https://loremflickr.com/400/300/foundation?lock=102" alt="Silk Skin Foundation" loading="lazy">
       </div>
       <div class="card-head"><h3>Silk Skin Foundation</h3><span class="stars">★★★★☆</span></div>
       <p class="desc">Breathable medium coverage that adjusts to your undertone within minutes of application.</p>
@@ -249,13 +278,9 @@
       <div class="price-row"><span class="price">₹899</span><button class="add-btn">Add</button></div>
     </div>
 
-    <div class="card" style="--pc:#b8467a">
+    <div class="card">
       <div class="card-photo"><span class="card-tag">Eyes</span>
-        <svg viewBox="0 0 120 100"><rect x="4" y="4" width="112" height="92" rx="8" fill="#3a2028"/><g>
-          <circle cx="24" cy="26" r="10" fill="#c99a5b"/><circle cx="48" cy="26" r="10" fill="#b8467a"/><circle cx="72" cy="26" r="10" fill="#8a2a5e"/><circle cx="96" cy="26" r="10" fill="#5c1f2e"/>
-          <circle cx="24" cy="50" r="10" fill="#c25b3f"/><circle cx="48" cy="50" r="10" fill="#a8293d"/><circle cx="72" cy="50" r="10" fill="#e9c98f"/><circle cx="96" cy="50" r="10" fill="#7c2035"/>
-          <circle cx="24" cy="74" r="10" fill="#dda7c9"/><circle cx="48" cy="74" r="10" fill="#f2b8d6"/><circle cx="72" cy="74" r="10" fill="#c98d9a"/><circle cx="96" cy="74" r="10" fill="#ecd9b6"/>
-        </g></svg>
+        <img src="https://loremflickr.com/400/300/eyeshadow?lock=103" alt="Nine-Well Eye Palette" loading="lazy">
       </div>
       <div class="card-head"><h3>Nine-Well Eye Palette</h3><span class="stars">★★★★★</span></div>
       <p class="desc">Matte and shimmer finishes tuned to the same warm-plum family as the rest of the Edit.</p>
@@ -263,9 +288,9 @@
       <div class="price-row"><span class="price">₹1,249</span><button class="add-btn">Add</button></div>
     </div>
 
-    <div class="card" style="--pc:#8a2a5e">
+    <div class="card">
       <div class="card-photo"><span class="card-tag">Cheek</span>
-        <svg viewBox="0 0 100 100"><circle cx="50" cy="55" r="38" fill="#e9c98f"/><circle cx="50" cy="55" r="38" fill="none" stroke="#8a2a5e" stroke-width="3"/><circle cx="50" cy="55" r="22" fill="#c25b3f"/><rect x="40" y="10" width="20" height="10" rx="3" fill="#3a2028"/></svg>
+        <img src="https://loremflickr.com/400/300/blush?lock=104" alt="Flush Cream Blush" loading="lazy">
       </div>
       <div class="card-head"><h3>Flush Cream Blush</h3><span class="stars">★★★★☆</span></div>
       <p class="desc">Melts into skin with a fingertip — no brush required. Builds from a wash to a full flush.</p>
@@ -273,9 +298,9 @@
       <div class="price-row"><span class="price">₹599</span><button class="add-btn">Add</button></div>
     </div>
 
-    <div class="card" style="--pc:#5c1f2e">
+    <div class="card">
       <div class="card-photo"><span class="card-tag">Eyes</span>
-        <svg viewBox="0 0 120 100"><rect x="6" y="46" width="80" height="10" rx="5" fill="#3a2028" transform="rotate(-8 6 46)"/><path d="M84 40 L108 34 L104 50 Z" fill="#5c1f2e" transform="rotate(-8 84 40)"/><rect x="6" y="46" width="20" height="10" rx="5" fill="#c99a5b" transform="rotate(-8 6 46)"/></svg>
+        <img src="https://loremflickr.com/400/300/eyeliner?lock=105" alt="Precision Liquid Liner" loading="lazy">
       </div>
       <div class="card-head"><h3>Precision Liquid Liner</h3><span class="stars">★★★★★</span></div>
       <p class="desc">A fine 0.5mm felt tip for a hairline wing that holds shape through heat and humidity.</p>
@@ -283,9 +308,9 @@
       <div class="price-row"><span class="price">₹549</span><button class="add-btn">Add</button></div>
     </div>
 
-    <div class="card" style="--pc:#c25b3f">
+    <div class="card">
       <div class="card-photo"><span class="card-tag">Face</span>
-        <svg viewBox="0 0 100 140"><rect x="28" y="34" width="44" height="86" rx="8" fill="#e9c98f" opacity="0.85"/><rect x="28" y="34" width="44" height="86" rx="8" fill="none" stroke="#c25b3f" stroke-width="2"/><rect x="40" y="10" width="20" height="26" rx="3" fill="#3a2028"/><rect x="60" y="14" width="18" height="6" rx="3" fill="#c25b3f"/><path d="M84 12 l8 -4 M86 18 l9 0 M84 24 l8 4" stroke="#c25b3f" stroke-width="2" stroke-linecap="round"/></svg>
+        <img src="https://loremflickr.com/400/300/perfume?lock=106" alt="Glow Setting Mist" loading="lazy">
       </div>
       <div class="card-head"><h3>Glow Setting Mist</h3><span class="stars">★★★★☆</span></div>
       <p class="desc">Locks everything above in place while leaving a faint dewy finish rather than a matte film.</p>
@@ -293,9 +318,9 @@
       <div class="price-row"><span class="price">₹749</span><button class="add-btn">Add</button></div>
     </div>
 
-    <div class="card" style="--pc:#3a2028">
+    <div class="card">
       <div class="card-photo"><span class="card-tag">Eyes</span>
-        <svg viewBox="0 0 100 140"><rect x="34" y="0" width="32" height="14" rx="3" fill="#c99a5b"/><rect x="38" y="12" width="24" height="60" fill="#3a2028"/><rect x="30" y="70" width="40" height="66" rx="10" fill="#1c1119"/><rect x="30" y="70" width="40" height="66" rx="10" fill="none" stroke="#c99a5b" stroke-width="2"/></svg>
+        <img src="https://loremflickr.com/400/300/mascara?lock=107" alt="Lash Lift Mascara" loading="lazy">
       </div>
       <div class="card-head"><h3>Lash Lift Mascara</h3><span class="stars">★★★★★</span></div>
       <p class="desc">A curved brush that separates and lifts without clumping — no smudging by midday.</p>
@@ -303,9 +328,9 @@
       <div class="price-row"><span class="price">₹649</span><button class="add-btn">Add</button></div>
     </div>
 
-    <div class="card" style="--pc:#f2b8d6">
+    <div class="card">
       <div class="card-photo"><span class="card-tag">Lip</span>
-        <svg viewBox="0 0 100 140"><rect x="30" y="10" width="40" height="70" rx="10" fill="#f2b8d6" opacity="0.9"/><rect x="30" y="10" width="40" height="70" rx="10" fill="none" stroke="#b8467a" stroke-width="2"/><rect x="38" y="78" width="24" height="16" fill="#3a2028"/><path d="M50 94 v22" stroke="#c99a5b" stroke-width="4" stroke-linecap="round"/><ellipse cx="50" cy="122" rx="10" ry="6" fill="#b8467a"/></svg>
+        <img src="https://loremflickr.com/400/300/lipgloss?lock=108" alt="High-Shine Lip Gloss" loading="lazy">
       </div>
       <div class="card-head"><h3>High-Shine Lip Gloss</h3><span class="stars">★★★★☆</span></div>
       <p class="desc">Non-sticky, mirror-shine finish with a doe-foot applicator for precise edges.</p>
@@ -313,9 +338,9 @@
       <div class="price-row"><span class="price">₹499</span><button class="add-btn">Add</button></div>
     </div>
 
-    <div class="card" style="--pc:#ecd9b6">
+    <div class="card">
       <div class="card-photo"><span class="card-tag">Face</span>
-        <svg viewBox="0 0 100 100"><rect x="20" y="20" width="60" height="60" rx="8" fill="#3a2028"/><rect x="28" y="28" width="44" height="44" rx="4" fill="#ecd9b6"/><circle cx="50" cy="50" r="14" fill="#f6ede3" opacity="0.8"/></svg>
+        <img src="https://loremflickr.com/400/300/blush?lock=109" alt="Gilded Glow Highlighter" loading="lazy">
       </div>
       <div class="card-head"><h3>Gilded Glow Highlighter</h3><span class="stars">★★★★★</span></div>
       <p class="desc">A pressed powder highlighter that catches light without turning glittery or grainy.</p>
@@ -323,9 +348,9 @@
       <div class="price-row"><span class="price">₹649</span><button class="add-btn">Add</button></div>
     </div>
 
-    <div class="card" style="--pc:#e9c98f">
+    <div class="card">
       <div class="card-photo"><span class="card-tag">Face</span>
-        <svg viewBox="0 0 100 140"><rect x="34" y="0" width="32" height="16" rx="3" fill="#c99a5b"/><rect x="36" y="14" width="28" height="50" fill="#e9c98f"/><rect x="30" y="62" width="40" height="66" rx="8" fill="#3a2028"/><rect x="30" y="62" width="40" height="66" rx="8" fill="none" stroke="#c99a5b" stroke-width="2"/></svg>
+        <img src="https://loremflickr.com/400/300/concealer?lock=110" alt="Bright-Eye Concealer" loading="lazy">
       </div>
       <div class="card-head"><h3>Bright-Eye Concealer</h3><span class="stars">★★★★☆</span></div>
       <p class="desc">A creamy, crease-resistant formula that brightens under-eyes without settling into fine lines.</p>
@@ -350,6 +375,8 @@
 </section>
 
 <section class="cta" id="join">
+  <div class="cta-bg"></div>
+  <div class="cta-overlay"></div>
   <span class="eyebrow">Join the list</span>
   <h2>Be first to the next drop.</h2>
   <p>New shades land quarterly, and the list sees them a week before anyone else.</p>
