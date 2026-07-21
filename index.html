@@ -8,49 +8,93 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#1c1119; --surface:#291721; --surface-2:#331d29;
-    --cream:#f6ede3; --cream-dim:#cdbdae; --gold:#c99a5b; --wine:#7c2035;
-    --shade:#a8293d; --shade-soft:#e7b9bd;
+    --ink:#1c1119;
+    --surface:#291721;
+    --surface-2:#331d29;
+    --cream:#f6ede3;
+    --cream-dim:#cdbdae;
+    --gold:#c99a5b;
+    --wine:#7c2035;
+    --shade: #a8293d;
+    --shade-soft: #e7b9bd;
   }
+
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{background:var(--ink);color:var(--cream);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;}
-  h1,h2,h3,.display{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-0.01em;}
-  .eyebrow{font-family:'Jost',sans-serif;text-transform:uppercase;letter-spacing:0.28em;font-size:0.7rem;color:var(--gold);font-weight:500;}
+
+  body{
+    background:var(--ink);
+    color:var(--cream);
+    font-family:'Jost', sans-serif;
+    font-weight:300;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3, .display{font-family:'Fraunces', serif;font-weight:500;letter-spacing:-0.01em;}
+
+  .eyebrow{
+    font-family:'Jost',sans-serif;text-transform:uppercase;
+    letter-spacing:0.28em;font-size:0.7rem;color:var(--gold);font-weight:500;
+  }
+
   a{color:inherit;text-decoration:none;}
 
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.6rem 5vw;mix-blend-mode:difference;}
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:1.6rem 5vw;mix-blend-mode:difference;
+  }
   .logo{font-family:'Fraunces',serif;font-size:1.3rem;letter-spacing:0.03em;}
   .nav-links{display:none;gap:2.4rem;font-size:0.82rem;letter-spacing:0.04em;}
   .nav-links a{opacity:0.85;transition:opacity .25s;}
   .nav-links a:hover{opacity:1;}
   @media(min-width:760px){.nav-links{display:flex;}}
 
-  .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:7rem 5vw 4rem;position:relative;
-    background:radial-gradient(ellipse 60% 50% at 85% 15%, color-mix(in srgb, var(--shade) 35%, transparent), transparent 70%), var(--ink);
-    transition:background 0.6s ease;}
+  .hero{
+    min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+    padding:7rem 5vw 4rem;position:relative;
+    background:
+      radial-gradient(ellipse 60% 50% at 85% 15%, color-mix(in srgb, var(--shade) 35%, transparent), transparent 70%),
+      var(--ink);
+    transition:background 0.6s ease;
+  }
   .hero-top{display:flex;align-items:center;gap:0.8rem;margin-bottom:1.6rem;}
   .hero-top .rule{width:2.4rem;height:1px;background:var(--gold);}
-  .hero h1{font-size:clamp(2.6rem,8vw,6.4rem);line-height:0.98;max-width:14ch;}
+  .hero h1{font-size:clamp(2.6rem, 8vw, 6.4rem);line-height:0.98;max-width:14ch;}
   .hero h1 em{font-style:italic;color:var(--shade-soft);transition:color .6s ease;}
+
   .hero-sub{display:flex;gap:4rem;margin-top:2.6rem;flex-wrap:wrap;align-items:flex-end;max-width:720px;}
   .hero-copy{max-width:34ch;color:var(--cream-dim);font-size:0.98rem;line-height:1.6;}
-  .btn{display:inline-flex;align-items:center;gap:0.6rem;padding:0.95rem 1.8rem;border:1px solid var(--gold);
-    font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;transition:all .3s ease;white-space:nowrap;
-    background:none;cursor:pointer;color:var(--cream);font-family:'Jost',sans-serif;}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:0.6rem;padding:0.95rem 1.8rem;
+    border:1px solid var(--gold);font-size:0.78rem;letter-spacing:0.14em;
+    text-transform:uppercase;transition:all .3s ease;white-space:nowrap;
+    background:none;cursor:pointer;color:var(--cream);font-family:'Jost',sans-serif;
+  }
   .btn:hover{background:var(--gold);color:var(--ink);}
 
   .shade-strip{margin-top:3.4rem;}
   .shade-strip .eyebrow{margin-bottom:0.9rem;display:block;}
   .swatches{display:flex;gap:0.9rem;flex-wrap:wrap;}
-  .swatch{width:3rem;height:3rem;border-radius:50%;cursor:pointer;border:2px solid transparent;position:relative;transition:transform .25s ease, border-color .25s ease;}
+  .swatch{
+    width:3rem;height:3rem;border-radius:50%;cursor:pointer;
+    border:2px solid transparent;position:relative;
+    transition:transform .25s ease, border-color .25s ease;
+  }
   .swatch:hover{transform:translateY(-4px);}
   .swatch.active{border-color:var(--cream);}
-  .swatch::after{content:attr(data-name);position:absolute;bottom:-1.6rem;left:50%;transform:translateX(-50%);
-    font-size:0.65rem;letter-spacing:0.05em;color:var(--cream-dim);white-space:nowrap;opacity:0;transition:opacity .2s ease;}
+  .swatch::after{
+    content:attr(data-name);position:absolute;bottom:-1.6rem;left:50%;transform:translateX(-50%);
+    font-size:0.65rem;letter-spacing:0.05em;color:var(--cream-dim);
+    white-space:nowrap;opacity:0;transition:opacity .2s ease;
+  }
   .swatch:hover::after,.swatch.active::after{opacity:1;}
 
-  .marquee{border-top:1px solid rgba(246,237,227,0.15);border-bottom:1px solid rgba(246,237,227,0.15);padding:1.1rem 0;overflow:hidden;white-space:nowrap;}
+  .marquee{
+    border-top:1px solid rgba(246,237,227,0.15);border-bottom:1px solid rgba(246,237,227,0.15);
+    padding:1.1rem 0;overflow:hidden;white-space:nowrap;
+  }
   .marquee-track{display:inline-block;animation:scroll 26s linear infinite;}
   .marquee-track span{font-family:'Fraunces',serif;font-style:italic;font-size:1.1rem;color:var(--cream-dim);margin:0 2.2rem;}
   @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
@@ -60,27 +104,46 @@
   .section-head h2{font-size:clamp(2rem,4vw,3.2rem);}
   .section-head p{max-width:32ch;color:var(--cream-dim);font-size:0.92rem;line-height:1.6;}
 
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:rgba(246,237,227,0.12);}
-  .card{background:var(--ink);padding:2rem 1.7rem 1.8rem;display:flex;flex-direction:column;gap:1rem;transition:background .35s ease;}
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:1px;background:rgba(246,237,227,0.12);
+  }
+  .card{
+    background:var(--ink);padding:2rem 1.7rem 1.8rem;
+    display:flex;flex-direction:column;gap:1rem;transition:background .35s ease;
+  }
   .card:hover{background:var(--surface);}
-  .card-photo{width:100%;height:12rem;border-radius:3px;
-    background:radial-gradient(ellipse at 50% 85%, rgba(0,0,0,0.35), transparent 60%), linear-gradient(160deg,#3a2230,#241521);
-    display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-  .card-photo svg{width:62%;height:85%;filter:drop-shadow(0 10px 14px rgba(0,0,0,0.45));}
-  .card-tag{position:absolute;top:0.7rem;left:0.7rem;font-size:0.63rem;letter-spacing:0.12em;text-transform:uppercase;
-    background:rgba(28,17,25,0.6);padding:0.28rem 0.6rem;color:var(--cream);z-index:2;}
+  .card-photo{
+    width:100%;height:11rem;border-radius:3px;
+    background:linear-gradient(160deg, color-mix(in srgb, var(--pc,var(--wine)) 22%, var(--surface-2)), var(--surface-2));
+    display:flex;align-items:center;justify-content:center;position:relative;
+  }
+  .card-photo svg{width:64%;height:78%;}
+  .card-tag{
+    position:absolute;top:0.7rem;left:0.7rem;
+    font-size:0.63rem;letter-spacing:0.12em;text-transform:uppercase;
+    background:rgba(28,17,25,0.6);padding:0.28rem 0.6rem;color:var(--cream);
+  }
   .card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:0.6rem;}
-  .card h3{font-size:1.14rem;font-weight:500;line-height:1.25;}
+  .card h3{font-size:1.18rem;font-weight:500;line-height:1.25;}
   .stars{font-size:0.72rem;color:var(--gold);white-space:nowrap;}
-  .card .desc{color:var(--cream-dim);font-size:0.83rem;line-height:1.55;flex-grow:1;}
+  .card .desc{color:var(--cream-dim);font-size:0.84rem;line-height:1.55;flex-grow:1;}
   .card .meta-row{display:flex;gap:0.5rem;flex-wrap:wrap;}
-  .pill{font-size:0.65rem;letter-spacing:0.05em;text-transform:uppercase;border:1px solid rgba(246,237,227,0.22);
-    color:var(--cream-dim);padding:0.25rem 0.55rem;border-radius:20px;}
-  .card .price-row{display:flex;justify-content:space-between;align-items:center;padding-top:0.85rem;
-    border-top:1px solid rgba(246,237,227,0.12);font-size:0.9rem;}
+  .pill{
+    font-size:0.66rem;letter-spacing:0.05em;text-transform:uppercase;
+    border:1px solid rgba(246,237,227,0.22);color:var(--cream-dim);
+    padding:0.25rem 0.55rem;border-radius:20px;
+  }
+  .card .price-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-top:0.85rem;border-top:1px solid rgba(246,237,227,0.12);font-size:0.9rem;
+  }
   .price{font-family:'Fraunces',serif;font-style:italic;color:var(--gold);}
-  .add-btn{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);
-    padding:0.4rem 0.75rem;background:none;cursor:pointer;transition:all .25s ease;font-family:'Jost',sans-serif;}
+  .add-btn{
+    font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--gold);border:1px solid var(--gold);padding:0.4rem 0.75rem;
+    background:none;cursor:pointer;transition:all .25s ease;font-family:'Jost',sans-serif;
+  }
   .add-btn:hover{background:var(--gold);color:var(--ink);}
 
   .ritual{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2.4rem;}
@@ -93,10 +156,18 @@
   .cta h2{font-size:clamp(2.2rem,6vw,4.4rem);max-width:16ch;margin:0 auto 1.6rem;line-height:1.05;}
   .cta p{color:var(--cream-dim);max-width:36ch;margin:0 auto 2.4rem;}
 
-  footer{padding:3rem 5vw;display:flex;justify-content:space-between;align-items:center;font-size:0.78rem;
-    color:var(--cream-dim);border-top:1px solid rgba(246,237,227,0.12);flex-wrap:wrap;gap:1rem;}
+  footer{
+    padding:3rem 5vw;display:flex;justify-content:space-between;align-items:center;
+    font-size:0.78rem;color:var(--cream-dim);border-top:1px solid rgba(246,237,227,0.12);
+    flex-wrap:wrap;gap:1rem;
+  }
 
-  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}.marquee-track{animation:none;}*{transition:none !important;}}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .marquee-track{animation:none;}
+    *{transition:none !important;}
+  }
+
   ::selection{background:var(--shade);color:var(--cream);}
   a:focus-visible, button:focus-visible, .swatch:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
 </style>
@@ -105,16 +176,25 @@
 
 <nav>
   <div class="logo">VELOUR</div>
-  <div class="nav-links"><a href="#edit">The Edit</a><a href="#ritual">Ritual</a><a href="#join">Join</a></div>
+  <div class="nav-links">
+    <a href="#edit">The Edit</a>
+    <a href="#ritual">Ritual</a>
+    <a href="#join">Join</a>
+  </div>
 </nav>
 
 <header class="hero" id="hero">
-  <div class="hero-top"><div class="rule"></div><span class="eyebrow">Autumn Collection · 2026</span></div>
+  <div class="hero-top">
+    <div class="rule"></div>
+    <span class="eyebrow">Autumn Collection · 2026</span>
+  </div>
   <h1>Color that <em>commits</em>,<br>skin that breathes.</h1>
+
   <div class="hero-sub">
-    <p class="hero-copy">Fifteen pieces built from one pigment base, so your lip, cheek, and lid always agree with each other. Formulated without wax residue — wear it twelve hours, still feels like nothing.</p>
+    <p class="hero-copy">Ten pieces built from one pigment base, so your lip, cheek, and lid always agree with each other. Formulated without wax residue — wear it twelve hours, still feels like nothing.</p>
     <a href="#edit" class="btn">Shop the Edit →</a>
   </div>
+
   <div class="shade-strip">
     <span class="eyebrow">Try a shade on this page</span>
     <div class="swatches" id="swatches">
@@ -130,299 +210,126 @@
 
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>Twelve-hour wear</span><span>·</span><span>Cruelty-free</span><span>·</span>
-    <span>Buildable pigment</span><span>·</span><span>Vegan formula</span><span>·</span>
-    <span>Twelve-hour wear</span><span>·</span><span>Cruelty-free</span><span>·</span>
-    <span>Buildable pigment</span><span>·</span><span>Vegan formula</span><span>·</span>
+    <span>Twelve-hour wear</span><span>·</span>
+    <span>Cruelty-free</span><span>·</span>
+    <span>Buildable pigment</span><span>·</span>
+    <span>Vegan formula</span><span>·</span>
+    <span>Twelve-hour wear</span><span>·</span>
+    <span>Cruelty-free</span><span>·</span>
+    <span>Buildable pigment</span><span>·</span>
+    <span>Vegan formula</span><span>·</span>
   </div>
 </div>
 
 <section id="edit">
   <div class="section-head">
-    <h2>The Edit — 15 Products</h2>
+    <h2>The Edit — 10 Products</h2>
     <p>Every shade is mixed from the same four pigments, so nothing you pair ever clashes.</p>
   </div>
 
   <div class="grid">
 
-    <!-- 1 Lipstick -->
-    <div class="card"><div class="card-photo"><span class="card-tag">Lip</span>
-      <svg viewBox="0 0 100 150"><defs>
-        <linearGradient id="g1a" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5c0f20"/><stop offset="0.45" stop-color="#c9304a"/><stop offset="0.55" stop-color="#e0576e"/><stop offset="1" stop-color="#7c1830"/></linearGradient>
-        <linearGradient id="g1b" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a6a3a"/><stop offset="0.5" stop-color="#e9c98f"/><stop offset="1" stop-color="#8a6a3a"/></linearGradient>
-        <linearGradient id="g1c" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0d0709"/><stop offset="0.5" stop-color="#3a2028"/><stop offset="1" stop-color="#0d0709"/></linearGradient>
-      </defs>
-      <ellipse cx="50" cy="144" rx="26" ry="5" fill="#000" opacity="0.4"/>
-      <path d="M35 4 Q50 -6 65 4 L62 58 Q50 68 38 58 Z" fill="url(#g1a)"/>
-      <rect x="33" y="55" width="34" height="16" fill="url(#g1c)"/>
-      <rect x="27" y="68" width="46" height="46" rx="4" fill="url(#g1b)"/>
-      <rect x="27" y="110" width="46" height="30" rx="4" fill="url(#g1c)"/>
-      <rect x="38" y="8" width="6" height="40" fill="#fff" opacity="0.25"/>
-      </svg></div>
+    <div class="card" style="--pc:#a8293d">
+      <div class="card-photo"><span class="card-tag">Lip</span>
+        <svg viewBox="0 0 100 140"><rect x="30" y="0" width="40" height="55" rx="6" fill="#a8293d"/><rect x="34" y="50" width="32" height="14" fill="#3a2028"/><rect x="26" y="62" width="48" height="50" rx="4" fill="#e9c98f"/><rect x="26" y="106" width="48" height="30" rx="4" fill="#c99a5b"/></svg>
+      </div>
       <div class="card-head"><h3>Velvet Matte Lipstick</h3><span class="stars">★★★★★</span></div>
       <p class="desc">Weightless matte that sets in ninety seconds and doesn't transfer onto your cup. No feathering, no cakiness.</p>
       <div class="meta-row"><span class="pill">4.5g</span><span class="pill">12 shades</span><span class="pill">Vegan</span></div>
       <div class="price-row"><span class="price">₹699</span><button class="add-btn">Add</button></div>
     </div>
 
-    <!-- 2 Foundation -->
-    <div class="card"><div class="card-photo"><span class="card-tag">Face</span>
-      <svg viewBox="0 0 100 150"><defs>
-        <linearGradient id="g2a" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9a7442"/><stop offset="0.45" stop-color="#e9c98f"/><stop offset="0.6" stop-color="#f4dfb8"/><stop offset="1" stop-color="#8a6a3a"/></linearGradient>
-        <linearGradient id="g2c" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0d0709"/><stop offset="0.5" stop-color="#3a2028"/><stop offset="1" stop-color="#0d0709"/></linearGradient>
-      </defs>
-      <ellipse cx="50" cy="144" rx="28" ry="5" fill="#000" opacity="0.4"/>
-      <rect x="22" y="34" width="56" height="100" rx="12" fill="url(#g2a)"/>
-      <rect x="22" y="34" width="56" height="100" rx="12" fill="none" stroke="#5c4423" stroke-width="1" opacity="0.4"/>
-      <rect x="36" y="6" width="28" height="30" rx="5" fill="url(#g2c)"/>
-      <circle cx="50" cy="10" r="4" fill="#c99a5b"/>
-      <rect x="32" y="44" width="6" height="70" fill="#fff" opacity="0.3"/>
-      </svg></div>
+    <div class="card" style="--pc:#c99a5b">
+      <div class="card-photo"><span class="card-tag">Face</span>
+        <svg viewBox="0 0 100 140"><rect x="24" y="30" width="52" height="90" rx="10" fill="#e9c98f" opacity="0.9"/><rect x="24" y="30" width="52" height="90" rx="10" fill="none" stroke="#c99a5b" stroke-width="2"/><rect x="38" y="6" width="24" height="28" rx="4" fill="#3a2028"/><circle cx="50" cy="10" r="4" fill="#c99a5b"/></svg>
+      </div>
       <div class="card-head"><h3>Silk Skin Foundation</h3><span class="stars">★★★★☆</span></div>
       <p class="desc">Breathable medium coverage that adjusts to your undertone within minutes of application.</p>
       <div class="meta-row"><span class="pill">30ml</span><span class="pill">10 tones</span><span class="pill">SPF 15</span></div>
       <div class="price-row"><span class="price">₹899</span><button class="add-btn">Add</button></div>
     </div>
 
-    <!-- 3 Eye Palette -->
-    <div class="card"><div class="card-photo"><span class="card-tag">Eyes</span>
-      <svg viewBox="0 0 130 100"><defs>
-        <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a2b38"/><stop offset="1" stop-color="#241016"/></linearGradient>
-      </defs>
-      <ellipse cx="65" cy="96" rx="50" ry="5" fill="#000" opacity="0.4"/>
-      <rect x="6" y="6" width="118" height="86" rx="8" fill="url(#g3)"/>
-      <rect x="6" y="6" width="118" height="86" rx="8" fill="none" stroke="#c99a5b" stroke-width="1" opacity="0.5"/>
-      <circle cx="27" cy="26" r="10" fill="#c99a5b"/><circle cx="50" cy="26" r="10" fill="#b8467a"/><circle cx="73" cy="26" r="10" fill="#8a2a5e"/><circle cx="96" cy="26" r="10" fill="#5c1f2e"/>
-      <circle cx="27" cy="49" r="10" fill="#c25b3f"/><circle cx="50" cy="49" r="10" fill="#a8293d"/><circle cx="73" cy="49" r="10" fill="#e9c98f"/><circle cx="96" cy="49" r="10" fill="#7c2035"/>
-      <circle cx="27" cy="72" r="10" fill="#dda7c9"/><circle cx="50" cy="72" r="10" fill="#f2b8d6"/><circle cx="73" cy="72" r="10" fill="#c98d9a"/><circle cx="96" cy="72" r="10" fill="#ecd9b6"/>
-      <circle cx="24" cy="23" r="3" fill="#fff" opacity="0.5"/>
-      </svg></div>
+    <div class="card" style="--pc:#b8467a">
+      <div class="card-photo"><span class="card-tag">Eyes</span>
+        <svg viewBox="0 0 120 100"><rect x="4" y="4" width="112" height="92" rx="8" fill="#3a2028"/><g>
+          <circle cx="24" cy="26" r="10" fill="#c99a5b"/><circle cx="48" cy="26" r="10" fill="#b8467a"/><circle cx="72" cy="26" r="10" fill="#8a2a5e"/><circle cx="96" cy="26" r="10" fill="#5c1f2e"/>
+          <circle cx="24" cy="50" r="10" fill="#c25b3f"/><circle cx="48" cy="50" r="10" fill="#a8293d"/><circle cx="72" cy="50" r="10" fill="#e9c98f"/><circle cx="96" cy="50" r="10" fill="#7c2035"/>
+          <circle cx="24" cy="74" r="10" fill="#dda7c9"/><circle cx="48" cy="74" r="10" fill="#f2b8d6"/><circle cx="72" cy="74" r="10" fill="#c98d9a"/><circle cx="96" cy="74" r="10" fill="#ecd9b6"/>
+        </g></svg>
+      </div>
       <div class="card-head"><h3>Nine-Well Eye Palette</h3><span class="stars">★★★★★</span></div>
       <p class="desc">Matte and shimmer finishes tuned to the same warm-plum family as the rest of the Edit.</p>
       <div class="meta-row"><span class="pill">9 x 1.1g</span><span class="pill">Blendable</span></div>
       <div class="price-row"><span class="price">₹1,249</span><button class="add-btn">Add</button></div>
     </div>
 
-    <!-- 4 Blush -->
-    <div class="card"><div class="card-photo"><span class="card-tag">Cheek</span>
-      <svg viewBox="0 0 100 100"><defs>
-        <radialGradient id="g4" cx="0.35" cy="0.3" r="0.8"><stop offset="0" stop-color="#f4dfb8"/><stop offset="0.6" stop-color="#e9c98f"/><stop offset="1" stop-color="#9a7442"/></radialGradient>
-      </defs>
-      <ellipse cx="50" cy="92" rx="34" ry="5" fill="#000" opacity="0.35"/>
-      <circle cx="50" cy="55" r="38" fill="url(#g4)"/>
-      <circle cx="50" cy="55" r="38" fill="none" stroke="#8a6a3a" stroke-width="1.5"/>
-      <circle cx="50" cy="55" r="22" fill="#d9714f"/>
-      <circle cx="50" cy="55" r="22" fill="none" stroke="#8a3f2a" stroke-width="1" opacity="0.4"/>
-      <rect x="38" y="8" width="24" height="10" rx="3" fill="#3a2028"/>
-      <ellipse cx="38" cy="38" rx="8" ry="12" fill="#fff" opacity="0.3"/>
-      </svg></div>
+    <div class="card" style="--pc:#8a2a5e">
+      <div class="card-photo"><span class="card-tag">Cheek</span>
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="55" r="38" fill="#e9c98f"/><circle cx="50" cy="55" r="38" fill="none" stroke="#8a2a5e" stroke-width="3"/><circle cx="50" cy="55" r="22" fill="#c25b3f"/><rect x="40" y="10" width="20" height="10" rx="3" fill="#3a2028"/></svg>
+      </div>
       <div class="card-head"><h3>Flush Cream Blush</h3><span class="stars">★★★★☆</span></div>
       <p class="desc">Melts into skin with a fingertip — no brush required. Builds from a wash to a full flush.</p>
       <div class="meta-row"><span class="pill">8g</span><span class="pill">4 shades</span></div>
       <div class="price-row"><span class="price">₹599</span><button class="add-btn">Add</button></div>
     </div>
 
-    <!-- 5 Liquid Liner -->
-    <div class="card"><div class="card-photo"><span class="card-tag">Eyes</span>
-      <svg viewBox="0 0 130 100"><defs>
-        <linearGradient id="g5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a2028"/><stop offset="0.5" stop-color="#0d0709"/><stop offset="1" stop-color="#3a2028"/></linearGradient>
-      </defs>
-      <ellipse cx="65" cy="72" rx="46" ry="5" fill="#000" opacity="0.35"/>
-      <g transform="rotate(-10 65 50)">
-        <rect x="10" y="42" width="86" height="14" rx="7" fill="url(#g5)"/>
-        <path d="M96 36 L124 30 L120 56 L96 50 Z" fill="#5c1f2e"/>
-        <rect x="10" y="42" width="24" height="14" rx="7" fill="#c99a5b"/>
-        <rect x="14" y="44" width="60" height="3" fill="#fff" opacity="0.25"/>
-      </g>
-      </svg></div>
+    <div class="card" style="--pc:#5c1f2e">
+      <div class="card-photo"><span class="card-tag">Eyes</span>
+        <svg viewBox="0 0 120 100"><rect x="6" y="46" width="80" height="10" rx="5" fill="#3a2028" transform="rotate(-8 6 46)"/><path d="M84 40 L108 34 L104 50 Z" fill="#5c1f2e" transform="rotate(-8 84 40)"/><rect x="6" y="46" width="20" height="10" rx="5" fill="#c99a5b" transform="rotate(-8 6 46)"/></svg>
+      </div>
       <div class="card-head"><h3>Precision Liquid Liner</h3><span class="stars">★★★★★</span></div>
       <p class="desc">A fine 0.5mm felt tip for a hairline wing that holds shape through heat and humidity.</p>
       <div class="meta-row"><span class="pill">0.6ml</span><span class="pill">Waterproof</span></div>
       <div class="price-row"><span class="price">₹549</span><button class="add-btn">Add</button></div>
     </div>
 
-    <!-- 6 Setting Spray -->
-    <div class="card"><div class="card-photo"><span class="card-tag">Face</span>
-      <svg viewBox="0 0 100 150"><defs>
-        <linearGradient id="g6" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a6432"/><stop offset="0.45" stop-color="#d9a862"/><stop offset="0.6" stop-color="#f0c98a"/><stop offset="1" stop-color="#7a5628"/></linearGradient>
-      </defs>
-      <ellipse cx="50" cy="144" rx="26" ry="5" fill="#000" opacity="0.4"/>
-      <rect x="28" y="38" width="44" height="98" rx="8" fill="url(#g6)" opacity="0.92"/>
-      <rect x="28" y="38" width="44" height="98" rx="8" fill="none" stroke="#5c4423" stroke-width="1" opacity="0.4"/>
-      <rect x="40" y="10" width="20" height="30" rx="3" fill="#3a2028"/>
-      <rect x="60" y="16" width="18" height="7" rx="3" fill="#c25b3f"/>
-      <path d="M84 12 l9 -5 M87 19 l10 0 M84 26 l9 5" stroke="#c25b3f" stroke-width="2" stroke-linecap="round"/>
-      <rect x="34" y="48" width="6" height="76" fill="#fff" opacity="0.3"/>
-      </svg></div>
+    <div class="card" style="--pc:#c25b3f">
+      <div class="card-photo"><span class="card-tag">Face</span>
+        <svg viewBox="0 0 100 140"><rect x="28" y="34" width="44" height="86" rx="8" fill="#e9c98f" opacity="0.85"/><rect x="28" y="34" width="44" height="86" rx="8" fill="none" stroke="#c25b3f" stroke-width="2"/><rect x="40" y="10" width="20" height="26" rx="3" fill="#3a2028"/><rect x="60" y="14" width="18" height="6" rx="3" fill="#c25b3f"/><path d="M84 12 l8 -4 M86 18 l9 0 M84 24 l8 4" stroke="#c25b3f" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
       <div class="card-head"><h3>Glow Setting Mist</h3><span class="stars">★★★★☆</span></div>
       <p class="desc">Locks everything above in place while leaving a faint dewy finish rather than a matte film.</p>
       <div class="meta-row"><span class="pill">100ml</span><span class="pill">All-day hold</span></div>
       <div class="price-row"><span class="price">₹749</span><button class="add-btn">Add</button></div>
     </div>
 
-    <!-- 7 Mascara -->
-    <div class="card"><div class="card-photo"><span class="card-tag">Eyes</span>
-      <svg viewBox="0 0 100 150"><defs>
-        <linearGradient id="g7" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0d0709"/><stop offset="0.4" stop-color="#3a2028"/><stop offset="0.55" stop-color="#5c3a44"/><stop offset="1" stop-color="#0d0709"/></linearGradient>
-      </defs>
-      <ellipse cx="50" cy="144" rx="24" ry="5" fill="#000" opacity="0.4"/>
-      <rect x="36" y="0" width="28" height="16" rx="3" fill="#c99a5b"/>
-      <rect x="40" y="14" width="20" height="60" fill="#0d0709"/>
-      <rect x="30" y="72" width="40" height="68" rx="10" fill="url(#g7)"/>
-      <rect x="30" y="72" width="40" height="68" rx="10" fill="none" stroke="#c99a5b" stroke-width="1" opacity="0.5"/>
-      <rect x="35" y="80" width="5" height="50" fill="#fff" opacity="0.15"/>
-      </svg></div>
+    <div class="card" style="--pc:#3a2028">
+      <div class="card-photo"><span class="card-tag">Eyes</span>
+        <svg viewBox="0 0 100 140"><rect x="34" y="0" width="32" height="14" rx="3" fill="#c99a5b"/><rect x="38" y="12" width="24" height="60" fill="#3a2028"/><rect x="30" y="70" width="40" height="66" rx="10" fill="#1c1119"/><rect x="30" y="70" width="40" height="66" rx="10" fill="none" stroke="#c99a5b" stroke-width="2"/></svg>
+      </div>
       <div class="card-head"><h3>Lash Lift Mascara</h3><span class="stars">★★★★★</span></div>
       <p class="desc">A curved brush that separates and lifts without clumping — no smudging by midday.</p>
       <div class="meta-row"><span class="pill">9ml</span><span class="pill">Smudge-proof</span></div>
       <div class="price-row"><span class="price">₹649</span><button class="add-btn">Add</button></div>
     </div>
 
-    <!-- 8 Lip Gloss -->
-    <div class="card"><div class="card-photo"><span class="card-tag">Lip</span>
-      <svg viewBox="0 0 100 150"><defs>
-        <linearGradient id="g8" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a5476e"/><stop offset="0.45" stop-color="#f2b8d6"/><stop offset="0.6" stop-color="#fbdcec"/><stop offset="1" stop-color="#8a3860"/></linearGradient>
-      </defs>
-      <ellipse cx="50" cy="144" rx="24" ry="5" fill="#000" opacity="0.35"/>
-      <rect x="30" y="10" width="40" height="72" rx="10" fill="url(#g8)" opacity="0.92"/>
-      <rect x="30" y="10" width="40" height="72" rx="10" fill="none" stroke="#8a3860" stroke-width="1" opacity="0.4"/>
-      <rect x="38" y="80" width="24" height="16" fill="#3a2028"/>
-      <path d="M50 96 v22" stroke="#c99a5b" stroke-width="4" stroke-linecap="round"/>
-      <ellipse cx="50" cy="124" rx="10" ry="6" fill="#b8467a"/>
-      <rect x="34" y="18" width="5" height="50" fill="#fff" opacity="0.35"/>
-      </svg></div>
+    <div class="card" style="--pc:#f2b8d6">
+      <div class="card-photo"><span class="card-tag">Lip</span>
+        <svg viewBox="0 0 100 140"><rect x="30" y="10" width="40" height="70" rx="10" fill="#f2b8d6" opacity="0.9"/><rect x="30" y="10" width="40" height="70" rx="10" fill="none" stroke="#b8467a" stroke-width="2"/><rect x="38" y="78" width="24" height="16" fill="#3a2028"/><path d="M50 94 v22" stroke="#c99a5b" stroke-width="4" stroke-linecap="round"/><ellipse cx="50" cy="122" rx="10" ry="6" fill="#b8467a"/></svg>
+      </div>
       <div class="card-head"><h3>High-Shine Lip Gloss</h3><span class="stars">★★★★☆</span></div>
       <p class="desc">Non-sticky, mirror-shine finish with a doe-foot applicator for precise edges.</p>
       <div class="meta-row"><span class="pill">6ml</span><span class="pill">8 shades</span></div>
       <div class="price-row"><span class="price">₹499</span><button class="add-btn">Add</button></div>
     </div>
 
-    <!-- 9 Highlighter -->
-    <div class="card"><div class="card-photo"><span class="card-tag">Face</span>
-      <svg viewBox="0 0 100 100"><defs>
-        <radialGradient id="g9" cx="0.4" cy="0.35" r="0.75"><stop offset="0" stop-color="#fff7e6"/><stop offset="0.55" stop-color="#ecd9b6"/><stop offset="1" stop-color="#a5854f"/></radialGradient>
-      </defs>
-      <ellipse cx="50" cy="92" rx="32" ry="5" fill="#000" opacity="0.35"/>
-      <rect x="18" y="18" width="64" height="64" rx="8" fill="#241016"/>
-      <rect x="26" y="26" width="48" height="48" rx="4" fill="url(#g9)"/>
-      <circle cx="50" cy="50" r="15" fill="#fff" opacity="0.5"/>
-      <rect x="30" y="30" width="8" height="18" fill="#fff" opacity="0.4"/>
-      </svg></div>
+    <div class="card" style="--pc:#ecd9b6">
+      <div class="card-photo"><span class="card-tag">Face</span>
+        <svg viewBox="0 0 100 100"><rect x="20" y="20" width="60" height="60" rx="8" fill="#3a2028"/><rect x="28" y="28" width="44" height="44" rx="4" fill="#ecd9b6"/><circle cx="50" cy="50" r="14" fill="#f6ede3" opacity="0.8"/></svg>
+      </div>
       <div class="card-head"><h3>Gilded Glow Highlighter</h3><span class="stars">★★★★★</span></div>
       <p class="desc">A pressed powder highlighter that catches light without turning glittery or grainy.</p>
       <div class="meta-row"><span class="pill">7g</span><span class="pill">Buildable</span></div>
       <div class="price-row"><span class="price">₹649</span><button class="add-btn">Add</button></div>
     </div>
 
-    <!-- 10 Concealer -->
-    <div class="card"><div class="card-photo"><span class="card-tag">Face</span>
-      <svg viewBox="0 0 100 150"><defs>
-        <linearGradient id="g10" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9a7442"/><stop offset="0.45" stop-color="#e9c98f"/><stop offset="0.6" stop-color="#f4dfb8"/><stop offset="1" stop-color="#8a6a3a"/></linearGradient>
-      </defs>
-      <ellipse cx="50" cy="144" rx="22" ry="5" fill="#000" opacity="0.4"/>
-      <rect x="36" y="0" width="28" height="16" rx="3" fill="#c99a5b"/>
-      <rect x="38" y="14" width="24" height="48" fill="url(#g10)"/>
-      <rect x="32" y="60" width="36" height="70" rx="8" fill="#241016"/>
-      <rect x="32" y="60" width="36" height="70" rx="8" fill="none" stroke="#c99a5b" stroke-width="1" opacity="0.5"/>
-      <rect x="37" y="68" width="4" height="50" fill="#fff" opacity="0.15"/>
-      </svg></div>
+    <div class="card" style="--pc:#e9c98f">
+      <div class="card-photo"><span class="card-tag">Face</span>
+        <svg viewBox="0 0 100 140"><rect x="34" y="0" width="32" height="16" rx="3" fill="#c99a5b"/><rect x="36" y="14" width="28" height="50" fill="#e9c98f"/><rect x="30" y="62" width="40" height="66" rx="8" fill="#3a2028"/><rect x="30" y="62" width="40" height="66" rx="8" fill="none" stroke="#c99a5b" stroke-width="2"/></svg>
+      </div>
       <div class="card-head"><h3>Bright-Eye Concealer</h3><span class="stars">★★★★☆</span></div>
       <p class="desc">A creamy, crease-resistant formula that brightens under-eyes without settling into fine lines.</p>
       <div class="meta-row"><span class="pill">5ml</span><span class="pill">6 tones</span></div>
-      <div class="price-row"><span class="price">₹549</span><button class="add-btn">Add</button></div>
-    </div>
-
-    <!-- 11 Compact Powder -->
-    <div class="card"><div class="card-photo"><span class="card-tag">Face</span>
-      <svg viewBox="0 0 100 100"><defs>
-        <radialGradient id="g11a" cx="0.4" cy="0.35" r="0.75"><stop offset="0" stop-color="#3a2230"/><stop offset="1" stop-color="#1c1119"/></radialGradient>
-        <radialGradient id="g11b" cx="0.4" cy="0.35" r="0.75"><stop offset="0" stop-color="#fbeed8"/><stop offset="0.6" stop-color="#e9c98f"/><stop offset="1" stop-color="#a5854f"/></radialGradient>
-      </defs>
-      <ellipse cx="50" cy="94" rx="34" ry="5" fill="#000" opacity="0.35"/>
-      <circle cx="50" cy="52" r="40" fill="url(#g11a)"/>
-      <circle cx="50" cy="52" r="40" fill="none" stroke="#c99a5b" stroke-width="1" opacity="0.5"/>
-      <circle cx="50" cy="52" r="27" fill="url(#g11b)"/>
-      <circle cx="41" cy="42" r="7" fill="#fff" opacity="0.45"/>
-      </svg></div>
-      <div class="card-head"><h3>Velvet Compact Powder</h3><span class="stars">★★★★☆</span></div>
-      <p class="desc">A translucent finishing powder that blurs pores without flattening natural skin texture.</p>
-      <div class="meta-row"><span class="pill">10g</span><span class="pill">Oil control</span></div>
-      <div class="price-row"><span class="price">₹599</span><button class="add-btn">Add</button></div>
-    </div>
-
-    <!-- 12 Nail Polish -->
-    <div class="card"><div class="card-photo"><span class="card-tag">Nails</span>
-      <svg viewBox="0 0 100 150"><defs>
-        <linearGradient id="g12" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4a1220"/><stop offset="0.45" stop-color="#a8293d"/><stop offset="0.6" stop-color="#d1546a"/><stop offset="1" stop-color="#5c1626"/></linearGradient>
-      </defs>
-      <ellipse cx="50" cy="144" rx="22" ry="5" fill="#000" opacity="0.4"/>
-      <rect x="40" y="0" width="20" height="34" fill="#241016"/>
-      <rect x="44" y="4" width="12" height="24" fill="#3a2028"/>
-      <path d="M28 34 L72 34 L64 138 Q50 146 36 138 Z" fill="url(#g12)"/>
-      <path d="M28 34 L72 34 L70 50 L30 50 Z" fill="#f6ede3" opacity="0.9"/>
-      <rect x="36" y="60" width="6" height="50" fill="#fff" opacity="0.25"/>
-      </svg></div>
-      <div class="card-head"><h3>Vinyl Gel Nail Polish</h3><span class="stars">★★★★★</span></div>
-      <p class="desc">High-gloss vinyl finish that chips slower than a standard lacquer, no base coat needed.</p>
-      <div class="meta-row"><span class="pill">11ml</span><span class="pill">Quick-dry</span></div>
-      <div class="price-row"><span class="price">₹399</span><button class="add-btn">Add</button></div>
-    </div>
-
-    <!-- 13 Brow Pencil -->
-    <div class="card"><div class="card-photo"><span class="card-tag">Brows</span>
-      <svg viewBox="0 0 130 100"><defs>
-        <linearGradient id="g13" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a2a1c"/><stop offset="0.5" stop-color="#6b4a2e"/><stop offset="1" stop-color="#3a2a1c"/></linearGradient>
-      </defs>
-      <ellipse cx="65" cy="72" rx="48" ry="5" fill="#000" opacity="0.35"/>
-      <g transform="rotate(-8 65 50)">
-        <rect x="8" y="42" width="90" height="14" rx="3" fill="url(#g13)"/>
-        <path d="M98 42 L120 49 L98 56 Z" fill="#c99a5b"/>
-        <path d="M112 47 L120 49 L112 51 Z" fill="#241016"/>
-        <rect x="8" y="42" width="90" height="14" rx="3" fill="none" stroke="#241016" stroke-width="1" opacity="0.5"/>
-        <rect x="12" y="44" width="60" height="3" fill="#fff" opacity="0.2"/>
-      </g>
-      </svg></div>
-      <div class="card-head"><h3>Sculpt Brow Pencil</h3><span class="stars">★★★★☆</span></div>
-      <p class="desc">Micro-fine tip that draws hair-like strokes, paired with a spoolie end to blend the finish.</p>
-      <div class="meta-row"><span class="pill">0.3g</span><span class="pill">4 tones</span></div>
-      <div class="price-row"><span class="price">₹449</span><button class="add-btn">Add</button></div>
-    </div>
-
-    <!-- 14 Lip Liner -->
-    <div class="card"><div class="card-photo"><span class="card-tag">Lip</span>
-      <svg viewBox="0 0 130 100"><defs>
-        <linearGradient id="g14" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5c0f20"/><stop offset="0.5" stop-color="#a8293d"/><stop offset="1" stop-color="#5c0f20"/></linearGradient>
-      </defs>
-      <ellipse cx="65" cy="72" rx="48" ry="5" fill="#000" opacity="0.35"/>
-      <g transform="rotate(-8 65 50)">
-        <rect x="8" y="42" width="90" height="14" rx="3" fill="#3a2028"/>
-        <path d="M98 42 L120 49 L98 56 Z" fill="url(#g14)"/>
-        <path d="M112 47 L120 49 L112 51 Z" fill="#241016"/>
-        <rect x="8" y="42" width="24" height="14" rx="3" fill="#c99a5b"/>
-        <rect x="12" y="44" width="60" height="3" fill="#fff" opacity="0.2"/>
-      </g>
-      </svg></div>
-      <div class="card-head"><h3>Line &amp; Define Lip Liner</h3><span class="stars">★★★★★</span></div>
-      <p class="desc">Creamy but grip-true — keeps lipstick from feathering into fine lines through the day.</p>
-      <div class="meta-row"><span class="pill">1.2g</span><span class="pill">12 shades</span></div>
-      <div class="price-row"><span class="price">₹399</span><button class="add-btn">Add</button></div>
-    </div>
-
-    <!-- 15 Body Mist -->
-    <div class="card"><div class="card-photo"><span class="card-tag">Fragrance</span>
-      <svg viewBox="0 0 100 150"><defs>
-        <linearGradient id="g15" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a5476e"/><stop offset="0.45" stop-color="#f2b8d6"/><stop offset="0.6" stop-color="#fbdcec"/><stop offset="1" stop-color="#8a3860"/></linearGradient>
-      </defs>
-      <ellipse cx="50" cy="144" rx="26" ry="5" fill="#000" opacity="0.4"/>
-      <path d="M30 46 Q30 100 30 118 Q30 136 50 136 Q70 136 70 118 Q70 100 70 46 Q70 34 50 30 Q30 34 30 46 Z" fill="url(#g15)" opacity="0.92"/>
-      <rect x="40" y="8" width="20" height="24" rx="3" fill="#3a2028"/>
-      <rect x="58" y="14" width="16" height="7" rx="3" fill="#c99a5b"/>
-      <path d="M80 10 l8 -5 M83 17 l9 0 M80 24 l8 5" stroke="#c99a5b" stroke-width="2" stroke-linecap="round"/>
-      <ellipse cx="38" cy="70" rx="6" ry="30" fill="#fff" opacity="0.3"/>
-      </svg></div>
-      <div class="card-head"><h3>Bloom Body Mist</h3><span class="stars">★★★★☆</span></div>
-      <p class="desc">A sheer floral-musk mist, light enough to layer under perfume without fighting it.</p>
-      <div class="meta-row"><span class="pill">100ml</span><span class="pill">Alcohol-light</span></div>
       <div class="price-row"><span class="price">₹549</span><button class="add-btn">Add</button></div>
     </div>
 
@@ -457,6 +364,7 @@
 <script>
   const swatches = document.querySelectorAll('.swatch');
   const root = document.documentElement;
+
   swatches.forEach(sw => {
     const activate = () => {
       swatches.forEach(s => s.classList.remove('active'));
@@ -465,8 +373,11 @@
       root.style.setProperty('--shade-soft', sw.dataset.soft);
     };
     sw.addEventListener('click', activate);
-    sw.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); activate(); } });
+    sw.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); activate(); }
+    });
   });
+
   document.querySelectorAll('.add-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const original = btn.textContent;
