@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BLOOM BEAUTY — Makeup that means it</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Jost:wght@300;400;500;600&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#1c1119;
@@ -18,6 +18,7 @@
     --wine:#7c2035;
     --shade: #a8293d;
     --shade-soft: #e7b9bd;
+    --desc-color: #d9b79c;
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -31,7 +32,9 @@
     overflow-x:hidden;
   }
 
-  h1,h2,h3, .display{font-family:'Fraunces', serif;font-weight:500;letter-spacing:-0.01em;}
+  h1,h2,h3, .display{font-family:'Cormorant Garamond', serif;font-weight:600;letter-spacing:-0.01em;color:var(--gold);}
+
+  .card h3, .why-card h3, .step h3, .story-block h3{color:var(--cream);}
 
   .eyebrow{
     font-family:'Jost',sans-serif;text-transform:uppercase;
@@ -112,7 +115,12 @@
   section{padding:7rem 5vw;}
   .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.4rem;gap:2rem;flex-wrap:wrap;}
   .section-head h2{font-size:clamp(2rem,4vw,3.2rem);}
-  .section-head p{max-width:32ch;color:var(--cream-dim);font-size:0.92rem;line-height:1.6;}
+  .section-head p{max-width:32ch;color:var(--desc-color);font-size:0.92rem;line-height:1.6;font-family:'Manrope', sans-serif;}
+
+  .hero-copy{
+    font-family:'Manrope', sans-serif;
+    color:var(--desc-color);
+  }
 
   .grid{
     display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -146,7 +154,7 @@
   .card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:0.6rem;}
   .card h3{font-size:1.18rem;font-weight:500;line-height:1.25;}
   .stars{font-size:0.72rem;color:var(--gold);white-space:nowrap;}
-  .card .desc{color:var(--cream-dim);font-size:0.84rem;line-height:1.55;flex-grow:1;}
+  .card .desc{color:var(--desc-color);font-family:'Manrope', sans-serif;font-size:0.84rem;line-height:1.55;flex-grow:1;}
   .card .meta-row{display:flex;gap:0.5rem;flex-wrap:wrap;}
   .pill{
     font-size:0.66rem;letter-spacing:0.05em;text-transform:uppercase;
@@ -169,7 +177,7 @@
   .step{border-top:1px solid var(--gold);padding-top:1.1rem;}
   .step .num{font-family:'Fraunces',serif;font-style:italic;color:var(--gold);font-size:1rem;}
   .step h3{margin-top:0.6rem;font-size:1.2rem;font-weight:500;}
-  .step p{color:var(--cream-dim);font-size:0.86rem;margin-top:0.5rem;line-height:1.6;}
+  .step p{color:var(--desc-color);font-family:'Manrope', sans-serif;font-size:0.86rem;margin-top:0.5rem;line-height:1.6;}
 
   .cta{
     text-align:center;padding:7rem 5vw;position:relative;overflow:hidden;
@@ -183,7 +191,7 @@
   .cta-overlay{position:absolute;inset:0;background:var(--surface);opacity:0.82;z-index:0;}
   .cta > *{position:relative;z-index:1;}
   .cta h2{font-size:clamp(2.2rem,6vw,4.4rem);max-width:16ch;margin:0 auto 1.6rem;line-height:1.05;}
-  .cta p{color:var(--cream-dim);max-width:36ch;margin:0 auto 2.4rem;}
+  .cta p{color:var(--desc-color);font-family:'Manrope', sans-serif;max-width:36ch;margin:0 auto 2.4rem;}
 
   footer{
     padding:3rem 5vw;display:flex;justify-content:space-between;align-items:center;
@@ -199,6 +207,93 @@
 
   ::selection{background:var(--shade);color:var(--cream);}
   a:focus-visible, button:focus-visible, .swatch:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+
+  /* ---------- New sections added below ---------- */
+
+  .glow-banner{
+    text-align:center;padding:5.5rem 5vw;position:relative;overflow:hidden;
+    background:var(--surface);
+  }
+  .glow-banner h2{font-size:clamp(2rem,5.4vw,3.6rem);max-width:20ch;margin:0 auto 1.2rem;line-height:1.08;}
+  .glow-banner p{color:var(--desc-color);font-family:'Manrope', sans-serif;max-width:46ch;margin:0 auto 2.2rem;font-size:0.98rem;line-height:1.65;}
+
+  .steps-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2.4rem;counter-reset:step;}
+  .steps-row .step{position:relative;}
+
+  .story-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:3rem;align-items:start;}
+  .story-copy p{color:var(--desc-color);font-family:'Manrope', sans-serif;font-size:0.94rem;line-height:1.75;margin-bottom:1.1rem;}
+  .story-side{display:flex;flex-direction:column;gap:1px;background:rgba(246,237,227,0.12);}
+  .story-block{background:var(--ink);padding:1.8rem 1.6rem;}
+  .story-block h3{font-size:1.15rem;margin-bottom:0.7rem;}
+  .story-block p{color:var(--desc-color);font-family:'Manrope', sans-serif;font-size:0.86rem;line-height:1.65;}
+
+  .mission-list{list-style:none;margin-top:0.9rem;}
+  .mission-list li{
+    color:var(--desc-color);font-family:'Manrope', sans-serif;font-size:0.88rem;line-height:1.7;
+    padding:0.55rem 0;border-bottom:1px solid rgba(246,237,227,0.1);
+  }
+  .mission-list li:last-child{border-bottom:none;}
+
+  .review-card{
+    background:var(--surface);padding:2rem 1.7rem;
+    display:flex;flex-direction:column;gap:0.9rem;
+  }
+  .review-card .stars{font-size:0.85rem;}
+  .review-card p.quote{
+    font-family:'Fraunces',serif;font-style:italic;color:var(--cream);
+    font-size:1.02rem;line-height:1.55;flex-grow:1;
+  }
+  .review-card .author{color:var(--gold);font-size:0.78rem;letter-spacing:0.05em;text-transform:uppercase;}
+
+  .dev-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:rgba(246,237,227,0.12);}
+  .dev-block{background:var(--ink);padding:1.9rem 1.6rem;}
+  .dev-block h3{font-size:1.1rem;margin-bottom:0.9rem;}
+  .dev-block ul{list-style:none;}
+  .dev-block li{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:500;
+    color:#d9c4a0;font-size:0.92rem;line-height:1.9;
+    letter-spacing:0.01em;
+    padding-left:1.1rem;position:relative;
+  }
+  .dev-block li::before{
+    content:'—';position:absolute;left:0;color:var(--gold);
+  }
+  .dev-note{color:var(--desc-color);font-family:'Manrope', sans-serif;font-size:0.9rem;line-height:1.7;max-width:60ch;margin-top:2.6rem;}
+
+  .why-section{background:var(--surface);}
+  .why-grid{
+    position:relative;display:flex;flex-wrap:wrap;justify-content:center;
+    gap:3rem 2.2rem;padding-top:1.2rem;
+  }
+  .why-grid::before{
+    content:'';position:absolute;top:59px;left:4%;right:4%;height:0;z-index:0;
+    border-top:1px dashed color-mix(in srgb, var(--gold) 55%, transparent);
+  }
+  .why-card{
+    position:relative;z-index:1;width:148px;
+    display:flex;flex-direction:column;align-items:center;gap:1rem;
+  }
+  .seal{
+    width:104px;height:104px;border-radius:50%;flex-shrink:0;
+    background:radial-gradient(circle at 35% 30%, var(--surface-2), var(--ink) 70%);
+    border:1.5px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;position:relative;
+    transition:transform .4s ease, border-color .3s ease;
+  }
+  .seal::after{
+    content:'';position:absolute;inset:7px;border-radius:50%;
+    border:1px dashed color-mix(in srgb, var(--gold) 50%, transparent);
+  }
+  .why-card:nth-child(odd) .seal{transform:rotate(-5deg);}
+  .why-card:nth-child(even) .seal{transform:rotate(5deg);}
+  .why-card:hover .seal{transform:rotate(0deg) scale(1.08);border-color:var(--cream);}
+  .why-card .icon{font-size:1.7rem;position:relative;z-index:1;}
+  .why-card h3{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:500;
+    font-size:0.95rem;line-height:1.35;text-align:center;max-width:15ch;color:var(--cream);
+  }
 </style>
 </head>
 <body>
@@ -208,6 +303,8 @@
   <div class="nav-links">
     <a href="#edit">The Edit</a>
     <a href="#ritual">Ritual</a>
+    <a href="#story">Our Story</a>
+    <a href="#reviews">Reviews</a>
     <a href="#join">Join</a>
   </div>
 </nav>
@@ -250,6 +347,14 @@
     <span>Vegan formula</span><span>·</span>
   </div>
 </div>
+
+<!-- Glow banner -->
+<section class="glow-banner" id="glow">
+  <span class="eyebrow">Bloom Beauty</span>
+  <h2 style="margin-top:1rem;">Glow Differently. Feel Differently.</h2>
+  <p>Beauty is not about making you a different person but allowing you to bring out your inner best. We have everything you need in skincare and makeup. 💖</p>
+  <a href="#edit" class="btn">Shop Now →</a>
+</section>
 
 <section id="edit">
   <div class="section-head">
@@ -348,7 +453,7 @@
       <div class="meta-row"><span class="pill">7g</span><span class="pill">Buildable</span></div>
       <div class="price-row"><span class="price">₹649</span><button class="add-btn">Add</button></div>
     </div>
- 
+
     <div class="card">
       <div class="card-photo"><span class="card-tag">Face</span>
         <img src="public/remover.png" alt="Dazzler Makeup Remover" loading="lazy">
@@ -382,6 +487,20 @@
   </div>
 </section>
 
+<!-- How It Works -->
+<section id="how-it-works">
+  <div class="section-head">
+    <h2>How It Works</h2>
+    <p>It's this easy!</p>
+  </div>
+  <div class="steps-row">
+    <div class="step"><span class="num">1</span><h3>Explore</h3><p>Explore our store and select items according to your preferences.</p></div>
+    <div class="step"><span class="num">2</span><h3>Select Your Faves</h3><p>Select your favorite items — skincare products, lipstick, or other favorites.</p></div>
+    <div class="step"><span class="num">3</span><h3>Checkout</h3><p>Secure payment process in seconds.</p></div>
+    <div class="step"><span class="num">4</span><h3>Glow Time </h3><p>Items arrive on your doorstep, and you can glow in them.</p></div>
+  </div>
+</section>
+
 <section id="ritual">
   <div class="section-head">
     <h2>How it's built</h2>
@@ -395,6 +514,120 @@
   </div>
 </section>
 
+<!-- Our Story / Vision / Mission -->
+<section id="story">
+  <div class="section-head">
+    <h2>Our Story </h2>
+    <p>Where Bloom Beauty started, and where it's headed.</p>
+  </div>
+  <div class="story-wrap">
+    <div class="story-copy">
+      <p>Everything started with an idea of creating products that could make everyone feel confident regardless of their skin color, style, and even budget.</p>
+      <p>We have created this store for people who love makeup because they think that beauty can be exciting and effortless.</p>
+      <p>Each product in our store is carefully selected to allow you to feel confident and express yourself in your daily looks.</p>
+    </div>
+    <div class="story-side">
+      <div class="story-block">
+        <h3> Our Vision</h3>
+        <p>We want to create a community that is inclusive and celebrates individuality, uniqueness and confidence. Our vision is to provide quality cosmetics for everybody and inspire creativity, self-expression and self-love by being an ambassador of beauty.</p>
+      </div>
+      <div class="story-block">
+        <h3> Our Mission</h3>
+        <ul class="mission-list">
+          <li> Provide premium quality beauty products.</li>
+          <li> Encourage use of trusted skincare and makeup products.</li>
+          <li> Empower our customers by giving them confidence through beauty.</li>
+          <li> Build a beauty community for everyone.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Customer Reviews -->
+<section id="reviews">
+  <div class="section-head">
+    <h2>Customer Reviews</h2>
+    <p>What the Bloom Beauty community is saying.</p>
+  </div>
+  <div class="grid">
+    <div class="review-card">
+      <span class="stars">⭐⭐⭐⭐⭐</span>
+      <p class="quote">"Such great products! Quality exceeded my expectations and fast delivery."</p>
+      <span class="author">Priya S.</span>
+    </div>
+    <div class="review-card">
+      <span class="stars">⭐⭐⭐⭐⭐</span>
+      <p class="quote">"In love with these lip shades! They last for ages and feel so good on my lips."</p>
+      <span class="author">Ananya R.</span>
+    </div>
+    <div class="review-card">
+      <span class="stars">⭐⭐⭐⭐⭐</span>
+      <p class="quote">"The website is really clean and user friendly, the shopping process went really smoothly. Going to purchase more in the future!"</p>
+      <span class="author">Keerthana M.</span>
+    </div>
+    <div class="review-card">
+      <span class="stars">⭐⭐⭐⭐⭐</span>
+      <p class="quote">"Cheap but high-quality products, great packaging."</p>
+      <span class="author">Divya K.</span>
+    </div>
+  </div>
+</section>
+
+<!-- Website Development Information -->
+<section id="dev-info">
+  <div class="section-head">
+    <h2> Website Development Information</h2>
+    <p>The website has been built with the idea of creating a simple and fast website for an easy shopping experience.</p>
+  </div>
+  <div class="dev-wrap">
+    <div class="dev-block">
+      <h3>Frontend</h3>
+      <ul>
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>JavaScript</li>
+      </ul>
+    </div>
+    <div class="dev-block">
+      <h3>Design</h3>
+      <ul>
+        <li>Responsive design for mobile, tablet, and desktop devices.</li>
+        <li>An up-to-date, modern design with soft colors and typography.</li>
+        <li>Smooth animations that improve the user experience.</li>
+      </ul>
+    </div>
+    <div class="dev-block">
+      <h3>Features</h3>
+      <ul>
+        <li>Product display</li>
+        <li>Searching system</li>
+        <li>Cart page design</li>
+        <li>Customer reviews</li>
+        <li>Responsive navigation</li>
+        <li>Secure checkout process</li>
+      </ul>
+    </div>
+  </div>
+  <p class="dev-note">We have developed the website to make your online beauty shopping easier and more enjoyable.</p>
+</section>
+
+<!-- Why Choose Us -->
+<section id="why-us" class="why-section">
+  <div class="section-head">
+    <h2> Why Choose Our Company?</h2>
+    <p>Six seals of trust, strung together — everything we promise you, in one glance.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card"><div class="seal"><span class="icon">✨</span></div><h3>Highest Quality Products</h3></div>
+    <div class="why-card"><div class="seal"><span class="icon">🌸</span></div><h3>No Animal Tested Collection</h3></div>
+    <div class="why-card"><div class="seal"><span class="icon">🚚</span></div><h3>Quick and Safe Delivery</h3></div>
+    <div class="why-card"><div class="seal"><span class="icon">💳</span></div><h3>Safe Payments</h3></div>
+    <div class="why-card"><div class="seal"><span class="icon">💖</span></div><h3>Adored by Thousands</h3></div>
+    <div class="why-card"><div class="seal"><span class="icon">🌍</span></div><h3>Beauty for Everyone</h3></div>
+  </div>
+</section>
+
 <section class="cta" id="join">
   <div class="cta-bg"></div>
   <div class="cta-overlay"></div>
@@ -405,8 +638,8 @@
 </section>
 
 <footer>
-  <span>© 2026 BLOOM BEAUTY Cosmetics</span>
-  <span>Made with intent, not filler.</span>
+  <span>Glow. Love. Repeat. ✨</span>
+  <span>Created with love for every beauty lover.</span>
 </footer>
 
 <script>
